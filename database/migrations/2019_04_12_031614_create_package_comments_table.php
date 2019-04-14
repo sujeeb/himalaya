@@ -15,6 +15,7 @@ class CreatePackageCommentsTable extends Migration
     {
         Schema::create('package_comments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('package_id');
             $table->integer('user_id');
             $table->text('user_comment');
             $table->tinyInteger('comment_status');

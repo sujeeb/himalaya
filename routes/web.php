@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/package/create', 'PackageController@create')->name('package.create');
+Route::post('/package/store', 'PackageController@store')->name('package.store');
+
+
+

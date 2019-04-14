@@ -15,6 +15,7 @@ class CreatePackageImagesTable extends Migration
     {
         Schema::create('package_images', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('package_id');
             $table->string('image_title', 250);
             $table->string('image_name', 500);
             $table->tinyInteger('image_staus');

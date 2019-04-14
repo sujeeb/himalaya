@@ -15,6 +15,7 @@ class CreatePackageSummariesTable extends Migration
     {
         Schema::create('package_summaries', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('package_id');
             $table->string('summary_title', 250);
             $table->string('summary_location', 250);
             $table->text('summary_detail');
