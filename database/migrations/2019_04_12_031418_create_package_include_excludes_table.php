@@ -16,7 +16,7 @@ class CreatePackageIncludeExcludesTable extends Migration
         Schema::create('package_include_excludes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('package_id');
-            $table->text('incliude_detail');
+            $table->text('include_detail');
             $table->tinyInteger('include_status');
             $table->timestamps();
         });

@@ -16,8 +16,8 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('package_title', 250);
-            $table->text('package_discription');
-            $table->decimal('package_price', 5,2);
+            $table->text('package_description');
+            $table->float('package_price');
             $table->tinyInteger('status');
             $table->string('package_title_image', 500);
             $table->string('package_type', 250);

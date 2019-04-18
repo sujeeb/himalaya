@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Package_summary;
 
 class PackageSummaryController extends Controller
 {
@@ -13,7 +14,9 @@ class PackageSummaryController extends Controller
      */
     public function index()
     {
-        //
+        
+        $data['summarydata'] = Package_summary::all();
+        return view('packageSummary/index', $data);
     }
 
     /**
@@ -23,7 +26,7 @@ class PackageSummaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('packageSummary/create');
     }
 
     /**
@@ -34,7 +37,14 @@ class PackageSummaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $savedata = new Package_summary();
+        $savedata->package_id = $request->input('package_id');
+        $savedata->summary_title = $request->input('summary_title');
+        $savedata->summary_location = $request->input('summary_location');
+        $savedata->summary_status = $request->input('summary_status');
+        $savedata->summary_detail = $request->input('summary_detail');
+        $savedata->save();
+        return redirect('/packageSummary');
     }
 
     /**

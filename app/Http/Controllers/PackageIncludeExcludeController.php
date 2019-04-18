@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Package_include_exclude;
 
 class PackageIncludeExcludeController extends Controller
 {
@@ -13,7 +14,8 @@ class PackageIncludeExcludeController extends Controller
      */
     public function index()
     {
-        //
+         $data['includeExcludedata'] = Package_include_exclude::all();
+        return view('packageIncludeExclude/index', $data);
     }
 
     /**
@@ -23,7 +25,7 @@ class PackageIncludeExcludeController extends Controller
      */
     public function create()
     {
-        //
+        return view('packageIncludeExclude/create');
     }
 
     /**
@@ -34,7 +36,12 @@ class PackageIncludeExcludeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $savedata = new Package_include_exclude();
+        $savedata->include_detail = $request->input('include_detail');
+        $savedata->include_status = $request->input('include_status');
+        $savedata->package_id = $request->input('package_id');
+        $savedata->save();
+        return redirect('/packageIncludeExclude');
     }
 
     /**

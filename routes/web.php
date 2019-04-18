@@ -21,6 +21,16 @@ Route::get('/dashboard', function () {
 
 Route::get('/package/create', 'PackageController@create')->name('package.create');
 Route::post('/package/store', 'PackageController@store')->name('package.store');
+Route::get('/package/index', 'PackageController@index')->name('package.index');
+Route::get('/package/edit/{id}', 'PackageController@edit')->name('package.edit');
+Route::delete('/package/destroy/{id}', 'PackageController@destroy')->name('package.destroy');
+Route::post('/package/updatePackageDetails/{id}', 'PackageController@update')->name('package.update');
+
+Route::resource('packageSummary', 'PackageSummaryController');
+Route::resource('packageIncludeExclude', 'PackageIncludeExcludeController');
+Route::resource('packageImage', 'PackageImageController');
+
+
 
 
 

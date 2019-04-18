@@ -57,7 +57,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="{{url('/')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
@@ -150,30 +150,17 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
+                        <li class="active">
+                            <a class="js-arrow" href="{{url('/dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
+
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a href="{{url('package/create')}}">
+                                <i class="fas fa-chart-bar"></i>Create Package</a>
                         </li>
                         <li>
-                            <a href="table.html">
+                            <a href="{{url('package/index')}}">
                                 <i class="fas fa-table"></i>Tables</a>
                         </li>
                         <li>
@@ -425,7 +412,11 @@
             <!-- HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
  @yield('content')
+</div></div></div>
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
         </div>

@@ -18,7 +18,7 @@ class CreatePackageImagesTable extends Migration
             $table->integer('package_id');
             $table->string('image_title', 250);
             $table->string('image_name', 500);
-            $table->tinyInteger('image_staus');
+            $table->tinyInteger('image_status');
             $table->timestamps();
         });
     }

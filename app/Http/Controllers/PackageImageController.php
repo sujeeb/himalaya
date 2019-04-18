@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Package_image;
 
 class PackageImageController extends Controller
 {
@@ -13,7 +14,8 @@ class PackageImageController extends Controller
      */
     public function index()
     {
-        //
+        $data['imagedata'] = Package_image::all();
+        return view('packageImage/index', $data);
     }
 
     /**
@@ -23,7 +25,8 @@ class PackageImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('packageImage/create');
+        
     }
 
     /**
@@ -34,7 +37,13 @@ class PackageImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $savedata = new Package_image();
+        $savedata->image_title = $request->input('image_title');
+        $savedata->image_name = $request->input('image_name');
+        $savedata->image_status = $request->input('image_status');
+        $savedata->package_id = $request->input('package_id');
+        $savedata->save();
+        return redirect('/packageImage');
     }
 
     /**
