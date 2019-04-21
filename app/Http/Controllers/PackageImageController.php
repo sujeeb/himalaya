@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Package_image;
+use Image;
 
 class PackageImageController extends Controller
 {
@@ -37,12 +38,23 @@ class PackageImageController extends Controller
      */
     public function store(Request $request)
     {
-        $savedata = new Package_image();
-        $savedata->image_title = $request->input('image_title');
-        $savedata->image_name = $request->input('image_name');
-        $savedata->image_status = $request->input('image_status');
-        $savedata->package_id = $request->input('package_id');
-        $savedata->save();
+        foreach($request->file('image_name') as $key => $value) {
+            $savedata = new Package_image();
+            if ($request->hasfile('image_name')) 
+            {
+              $image = $value;     // name of input file is image so image is written here
+              $filename = time(). $image->getClientOriginalName();
+              $location = public_path('images/') . $filename;
+
+              Image::make($image)->save($location);
+            }
+              $savedata->image_title = $request->image_title[$key];
+              $savedata->image_name = $filename;
+              $savedata->image_status = $request->image_status[$key];
+              $savedata->package_id = 1;
+              $savedata->save();
+        }
+
         return redirect('/packageImage');
     }
 

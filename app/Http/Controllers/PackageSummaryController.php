@@ -37,13 +37,17 @@ class PackageSummaryController extends Controller
      */
     public function store(Request $request)
     {
+        foreach($request->input('summary_title') as $key =>$value)
+        {
         $savedata = new Package_summary();
-        $savedata->package_id = $request->input('package_id');
-        $savedata->summary_title = $request->input('summary_title');
-        $savedata->summary_location = $request->input('summary_location');
-        $savedata->summary_status = $request->input('summary_status');
-        $savedata->summary_detail = $request->input('summary_detail');
+        $savedata->package_id = 1;
+        $savedata->summary_title = $value;
+        $savedata->summary_location = $request->summary_location[$key];
+        $savedata->summary_status = $request->summary_status[$key];
+        $savedata->summary_detail = $request->summary_detail[$key];
         $savedata->save();
+        } 
+        
         return redirect('/packageSummary');
     }
 

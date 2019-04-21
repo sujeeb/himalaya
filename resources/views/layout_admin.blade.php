@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +18,10 @@
     <link href="{{ asset('himalayaDashboard/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('himalayaDashboard/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('himalayaDashboard/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
-
+    
+    <!-- Jquery JS-->
+    <script src="{{ asset('himalayaDashboard/vendor/jquery-3.2.1.min.js') }}"></script>
+    
     <!-- Bootstrap CSS-->
     <link href="{{ asset('himalayaDashboard/vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
 
@@ -422,10 +426,7 @@
         </div>
 
     </div>
-
-    <!-- Jquery JS-->
-    <script src="{{ asset('himalayaDashboard/vendor/jquery-3.2.1.min.js') }}"></script>
-    <!-- Bootstrap JS-->
+<!-- Bootstrap JS-->
     <script src="{{ asset('himalayaDashboard/vendor/bootstrap-4.1/popper.min.js') }}"></script>
     <script src="{{ asset('himalayaDashboard/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
     <!-- Vendor JS       -->

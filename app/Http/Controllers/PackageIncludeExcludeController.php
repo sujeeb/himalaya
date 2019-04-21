@@ -14,9 +14,9 @@ class PackageIncludeExcludeController extends Controller
      */
     public function index()
     {
-         $data['includeExcludedata'] = Package_include_exclude::all();
-        return view('packageIncludeExclude/index', $data);
-    }
+       $data['includeExcludedata'] = Package_include_exclude::all();
+       return view('packageIncludeExclude/index', $data);
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -36,11 +36,17 @@ class PackageIncludeExcludeController extends Controller
      */
     public function store(Request $request)
     {
-        $savedata = new Package_include_exclude();
-        $savedata->include_detail = $request->input('include_detail');
-        $savedata->include_status = $request->input('include_status');
-        $savedata->package_id = $request->input('package_id');
-        $savedata->save();
+        
+        foreach($request->input('include_detail') as $key=>$value){
+            $savedata = new Package_include_exclude();
+            $savedata->package_id = 1;
+            $savedata->include_detail = $value;
+            $savedata->include_status = $request->include_status[$key];
+            $savedata->save();
+
+
+        }
+        
         return redirect('/packageIncludeExclude');
     }
 

@@ -29,7 +29,17 @@ Route::post('/package/updatePackageDetails/{id}', 'PackageController@update')->n
 Route::resource('packageSummary', 'PackageSummaryController');
 Route::resource('packageIncludeExclude', 'PackageIncludeExcludeController');
 Route::resource('packageImage', 'PackageImageController');
+Route::get('/summarydiv', function(){
+	return view('packageSummary/summaryDiv');
+});
 
+Route::get('/includeExcludeDiv', function(){
+	return view('packageIncludeExclude/includeExcludeDiv');
+});
+
+Route::get('/imagediv', function(){
+	return view('packageImage/imagediv');
+});
 
 
 
