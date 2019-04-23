@@ -40,6 +40,12 @@ Route::get('/includeExcludeDiv', function(){
 Route::get('/imagediv', function(){
 	return view('packageImage/imagediv');
 });
+Route::post('/package/update/{id}', 'PackageController@update')->name('package.update');
+Route::get('/updateimagediv', function(){
+	return view('packageImage/updateimagediv');
+});
+
+
 
 
 

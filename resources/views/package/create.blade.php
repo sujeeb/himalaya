@@ -170,7 +170,7 @@
                 <div class="row col-lg-12">
                     <div class="card" id="imageMasterdiv">
                         <div class="card-header">
-                            <strong>Package</strong>
+                            <strong>Package Image</strong>
                             <button type="button" id="addImage" class="btn btn-info" >+</button>
                         </div>
                         <div style="background-color:#acc1e2">

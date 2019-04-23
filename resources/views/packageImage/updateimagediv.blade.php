@@ -2,6 +2,7 @@
                 <div class="card-body card-block col-4">
                     <div class="form-group">
                         <label for="image_title" class=" form-control-label">Image title</label>
+                        <input type="hidden" value="0" name ="id[]">
                         <input type="text" name="image_title[]"  class="form-control">
                     </div>
                 </div>

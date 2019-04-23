@@ -7,6 +7,7 @@ use App\Package;
 use Image;
 use App\Package_summary;
 use App\Package_include_exclude;
+use App\Package_image;
 use DB;
 
 class PackageController extends Controller
@@ -45,7 +46,6 @@ class PackageController extends Controller
             'package_title' => 'required',
             'package_description' => 'required',
             'package_price' => 'required | numeric',
-            'package_title_image' => 'required',
             'package_type' => 'required'
         ]);
         $savedata = new Package();
@@ -77,6 +77,7 @@ class PackageController extends Controller
         $savedatasummary->save();
         } 
         //end multiple summary
+
         //save multiple includeExclude
         foreach($request->input('include_detail') as $key=>$value){
             $savedatainclude = new Package_include_exclude();
@@ -88,6 +89,24 @@ class PackageController extends Controller
 
         }
         //end multiple includeExclude
+        //save multiple images
+        foreach($request->file('image_name') as $key => $value) {
+            $savedataimage = new Package_image();
+            if ($request->hasfile('image_name')) 
+            {
+              $image = $value;     // name of input file is image so image is written here
+              $filenameimage = time(). $image->getClientOriginalName();
+              $location = public_path('images/') . $filenameimage;
+
+              Image::make($image)->save($location);
+            }
+              $savedataimage->image_title = $request->image_title[$key];
+              $savedataimage->image_name = $filenameimage;
+              $savedataimage->image_status = $request->image_status[$key];
+              $savedataimage->package_id = $package_id;
+              $savedataimage->save();
+        }
+        //end multiple images
         return redirect('/package/index');
 
     }
@@ -112,6 +131,9 @@ class PackageController extends Controller
     public function edit($id)
     {
         $data['postdata'] = Package::find($id);
+        $data['package_include'] = Package_include_exclude::where('package_id', $id)->get();
+        $data['package_summary'] = Package_summary::where('package_id', $id)->get();
+        $data['package_image'] = Package_image::where('package_id', $id)->get();
         return view('package.updatePackageDetails', $data);    }
 
     /**
@@ -123,22 +145,90 @@ class PackageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'package_titlle' => 'required',
-            'package_description' => 'required',
-            'package_price' => 'required | numeric',
-            'package_title_image' => 'required',
-            'package_type' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'package_titlle' => 'required',
+        //     'package_description' => 'required',
+        //     'package_price' => 'required | numeric',
+        //     'package_type' => 'required'
+        // ]);
 
         $savedata = Package::find($id);
-         $savedata->package_title = $request->input('package_title');
+        //dd($savedata);
+        if ($request->hasfile('package_title_image')) 
+            {
+              $image = $request->file('package_title_image');     // name of input file is image so image is written here
+              $filenameimage = time(). $image->getClientOriginalName();
+              $location = public_path('images/') . $filenameimage;
+
+              Image::make($image)->save($location);
+              $savedata->package_title_image = $filenameimage;
+            }
+        $savedata->package_title = $request->input('package_title');
         $savedata->package_description = $request->input('package_description');
         $savedata->package_price = $request->input('package_price');
         $savedata->status = $request->input('status');
-        $savedata->package_title_image = $request->input('package_title_image');
         $savedata->package_type = $request->input('package_type');
         $savedata->save();
+        $package_id = $id;
+
+        //save multiple summary
+        Package_summary::where('package_id', $package_id)->delete();
+        foreach($request->input('summary_title') as $key =>$value)
+        {
+            $savedatasummary = new Package_summary();
+            $savedatasummary->package_id = $package_id;
+            $savedatasummary->summary_title = $value;
+            $savedatasummary->summary_location = $request->summary_location[$key];
+            $savedatasummary->summary_status = $request->summary_status[$key];
+            $savedatasummary->summary_detail = $request->summary_detail[$key];
+            $savedatasummary->save();
+        } 
+        //end multiple summary
+
+        //save multiple includeExclude
+        Package_include_exclude::where('package_id', $package_id)->delete();
+        foreach($request->input('include_detail') as $key=>$value){
+            $savedatainclude = new Package_include_exclude();
+            $savedatainclude->package_id = $package_id;
+            $savedatainclude->include_detail = $value;
+            $savedatainclude->include_status = $request->include_status[$key];
+            $savedatainclude->save();
+
+
+        }
+
+        //end multiple includeExclude
+
+                //save multiple images
+
+        foreach($request->input('image_title') as $key => $value) {
+            if($request->id[$key] == 0){
+                $savedataimage = new Package_image();
+            }
+            else{
+                $savedataimage = Package_image::find($request->id[$key]);
+            }
+            
+            if ($request->hasfile('image_name')) 
+            {
+              $image = $request->file("image_name")[$key];     // name of input file is image so image is written here
+              $filenameimage = time(). $image->getClientOriginalName();
+              $location = public_path('images/') . $filenameimage;
+
+              Image::make($image)->save($location);
+              $savedataimage->image_name = $filenameimage;
+            }
+              $savedataimage->image_title = $request->image_title[$key];
+              
+              $savedataimage->image_status = $request->image_status[$key];
+              $savedataimage->package_id = $package_id;
+              $savedataimage->save();
+        }
+        //end multiple images
+
+
+
+
       return redirect('/package/index');
 
     }

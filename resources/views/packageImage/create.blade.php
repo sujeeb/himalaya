@@ -7,7 +7,7 @@
         {{csrf_field()}}
         <div class="card" id="imageMasterdiv">
             <div class="card-header col-12">
-                <strong>Package</strong>
+                <strong>Package Image</strong>
             </div>
             <div class="row" style="background-color:#acc1e2">
                 <div class="card-body card-block col-4">
