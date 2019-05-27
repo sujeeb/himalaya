@@ -37,7 +37,7 @@
                 </div>
                 <div class="card-body card-block col-4">
                     <div class="form-group">
-                    <img style="width:150px; height:150px;" src="{{ asset('images').'/'.$postdata->package_title_image }}" />                        <label for="package_title_image" class=" form-control-label">Package title image</label>
+                    <img src="{{ asset('images').'/'.$postdata->package_title_image }}" />                        <label for="package_title_image" class=" form-control-label">Package title image</label>
                         <input type="file" id="package_title_image" name="package_title_image"  class="form-control">
                         {!! $errors->first('package_title_image', '<p class="text-danger">:message</p>') !!}
                     </div>
@@ -193,8 +193,9 @@
                             <div class="card-body card-block col-4">
                                 <div class="form-group">
                                     <label for="image_name" class=" form-control-label">Image name</label>
-                                    <img style="width:150px; height:150px;" src="{{ asset('images').'/'.$image->image_name }}" />
+                                    <img src="{{ asset('images').'/'.$image->image_name }}" />
                                     <input type="file" name="image_name[]"  class="form-control">
+                                    <input type="hidden" name="previous_image_name[]" value="{{$image->image_name}}">
                                 </div>
                             </div>
                             <div class="card-body card-block col-3">

@@ -200,25 +200,26 @@ class PackageController extends Controller
         //end multiple includeExclude
 
                 //save multiple images
-
+        Package_image::where('package_id', $package_id)->delete();
         foreach($request->input('image_title') as $key => $value) {
-            if($request->id[$key] == 0){
-                $savedataimage = new Package_image();
-            }
-            else{
-                $savedataimage = Package_image::find($request->id[$key]);
-                $savedataimage->image_name = $savedataimage->image_name;
-            }
-
-            if (!empty($request->image_name[$key]) && isset($request->image_name[$key]))
+            
+            
+            if ($request->hasfile('image_name[$key]')) 
             {
-              $image = $request->file($request->image_name[$key]);     // name of input file is image so image is written here
-              $filenameimage = time(). $image;
+              $image = $request->file("image_name[$key]");     // name of input file is image so image is written here
+              //$image = $value; 
+              $filenameimage = time(). $image->getClientOriginalName();
               $location = public_path('images/') . $filenameimage;
 
-              Image::make($request->file('image_name')[$key])->save($location);
+              Image::make($image)->save($location);
               $savedataimage->image_name = $filenameimage;
             }
+            else
+              {
+                if(isset($previous_image_name[$key])){
+$savedataimage->image_name = $request->previous_image_name[$key];
+            }
+          }
               $savedataimage->image_title = $request->image_title[$key];
               
               $savedataimage->image_status = $request->image_status[$key];

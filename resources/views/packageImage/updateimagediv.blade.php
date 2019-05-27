@@ -1,4 +1,4 @@
-<br>            <div class="row" style="background-color:#acc1e2">
+<br>            <div class="row imageDivMaster" style="background-color:#acc1e2">
                 <div class="card-body card-block col-4">
                     <div class="form-group">
                         <label for="image_title" class=" form-control-label">Image title</label>
@@ -20,6 +20,11 @@
                                     <option value="1">Active</option>
                                     <option value="0">Deactive</option>
                                 </select>
-                    </div>
+                    </div>                    
                 </div>
+              <div class="card-body card-block col-1">
+                        <div class="form-group">
+                            <button onClick="$(this).closest('.imageDivMaster').remove();" type="button" class="btn btn-danger" >X</button>
+                        </div>
+                    </div>
             </div>

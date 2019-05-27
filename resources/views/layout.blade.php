@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Colorlib Listed Directory Template</title>
@@ -50,6 +50,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{{route('login')}}">Login</a>
               </li>
             </ul>
             

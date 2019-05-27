@@ -1,4 +1,5 @@
- <br><div class="row" style="background-color:#acc1e2">
+
+ <br><div class="row summaryDivMaster" style="background-color:#acc1e2">
                     <div class="card-body card-block col-4">
                         <div class="form-group">
                             <label for="summary_title" class=" form-control-label">Summary title</label>
@@ -22,10 +23,17 @@
                                 </select>
                             </div>
                         </div>
-                    <div class="card-body card-block col-9">
+                    <div class="card-body card-block col-8">
                         <div class="form-group">
                             <label for="summary_detail" class=" form-control-label">Summary details</label>
                             <textarea name="summary_detail[]"  class="form-control"></textarea>
                         </div>
                     </div>
+
+                    <div class="card-body card-block col-1">
+                        <div class="form-group">
+                            <button onClick="$(this).closest('.summaryDivMaster').remove();" type="button" class="btn btn-danger" >X</button>
+                        </div>
+                    </div>
                 </div>
+              

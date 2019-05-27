@@ -1,4 +1,4 @@
-<br>            <div class="row" style="background-color:#acc1e2">
+<br>            <div class="row imageDivMaster" style="background-color:#acc1e2">
                 <div class="card-body card-block col-4">
                     <div class="form-group">
                         <label for="image_title" class=" form-control-label">Image title</label>
@@ -11,7 +11,7 @@
                         <input type="file" name="image_name[]"  class="form-control">
                     </div>
                 </div>
-                <div class="card-body card-block col-3">
+                <div class="card-body card-block col-2">
                     <div class="form-group">
                         <label for="image_status" class=" form-control-label">Status</label>
                          <select class="form-control" name="image_status[]">
@@ -21,4 +21,10 @@
                                 </select>
                     </div>
                 </div>
+                   <div class="card-body card-block col-1">
+                        <div class="form-group">
+                            <button onClick="$(this).closest('.imageDivMaster').remove();" type="button" class="btn btn-danger" >X</button>
+                        </div>
+                    </div>
+
             </div>

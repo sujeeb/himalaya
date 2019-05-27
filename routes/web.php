@@ -50,3 +50,7 @@ Route::get('/updateimagediv', function(){
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
