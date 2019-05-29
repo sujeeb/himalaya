@@ -45,7 +45,13 @@
                 <div class="card-body card-block col-4">
                     <div class="form-group">
                         <label for="package_type" class=" form-control-label">Package type</label>
-                        <input type="text" id="package_type" name="package_type" class="form-control">
+                        <select class="form-control" name="package_type">
+                            <option value="">Select Package Type</option>
+                            <option value="Top">Top</option>
+                            <option value="Best">Best</option>
+                            <option value="Featured">Featured</option>
+                            <option value="Normal">Normal</option>
+                        </select>
                         {!! $errors->first('package_type', '<p class="text-danger">:message</p>') !!}
                     </div>
                 </div>

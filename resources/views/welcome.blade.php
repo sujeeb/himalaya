@@ -27,33 +27,19 @@
     <section class="feature-destination">
       <div class="container">
         <div class="row">
+          @foreach($bestPackage as $best)
           <div class="col-md-4 element-animate ">
-            <a href="#" class="img-bg" style="background-image: url('../public/listed/images/img_2.jpg')">
+            <a href="#" class="img-bg" style="background-image: url('../public/images/{{$best->package_title_image}}')">
               <div class="text">
                 <span class="icon ion-ios-location"></span>
-                <h2>Stockton Beach, Austrlia</h2>
+                <h2>{{$best->package_title}}</h2>
                 <p>Visit This Place</p>
               </div>
             </a>
           </div>
-          <div class="col-md-4 element-animate ">
-            <a href="#" class="img-bg" style="background-image: url('../public/listed/images/img_1.jpg')">
-              <div class="text">
-                <span class="icon ion-ios-location"></span>
-                <h2>Trogir, Croatia</h2>
-                <p>Visit This Place</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-4 element-animate ">
-            <a href="#" class="img-bg last" style="background-image: url('../public/listed/images/img_3.jpg')">
-              <div class="text">
-                <span class="icon ion-ios-location"></span>
-                <h2>Desert, Morocco</h2>
-                <p>Visit This Place</p>
-              </div>
-            </a>
-          </div>
+          @endforeach
+          
+
         </div>
       </div>
     </section>
@@ -68,54 +54,21 @@
           </div>
         </div>
         <div class="row top-destination">
+          @foreach($topPackage as $top)
           <div class="col-lg-2 col-md-4 col-sm-6 col-12">
             <a href="#" class="place">
-              <img src="{{ asset('listed/images/img_1.jpg') }}" alt="Image placeholder">
-              <h2>Trogir, Croatia</h2>
+              <img src="{{ asset('images')}}/{{$top->package_title_image }}" alt="Image placeholder">
+              <h2>{{$top->package_title}}</h2>
               <p>Visit This Place</p>
             </a>
           </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="place">
-              <img src="{{ asset('listed/images/img_2.jpg') }}" alt="Image placeholder">
-              <h2>Stockton Beach, Australia</h2>
-              <p>Visit This Place</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="place">
-              <img src="{{ asset('listed/images/img_3.jpg') }}" alt="Image placeholder">
-              <h2>Desert, Morocco</h2>
-              <p>Visit This Place</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="place">
-              <img src="{{ asset('listed/images/img_4.jpg') }}" alt="Image placeholder">
-              <h2>Taj Mahal, India</h2>
-              <p>Visit This Place</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="place">
-              <img src="{{ asset('listed/images/img_5.jpg') }}" alt="Image placeholder">
-              <h2>Eiffel Tower, France</h2>
-              <p>Visit This Place</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="place">
-              <img src="{{ asset('listed/images/img_6.jpg') }}" alt="Image placeholder">
-              <h2>Opera House, Australia</h2>
-              <p>Visit This Place</p>
-            </a>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>
     <!-- END section -->
     
-    <section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url(../public/listed/images/big_image_2.jpg);">
+    <section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url(../listed/images/big_image_2.jpg);">
       <div class="container">
         <div class="row justify-content-center align-items-center intro">
           <div class="col-md-7 text-center element-animate">
@@ -145,80 +98,16 @@
             <div class="row">
               <div class="col-md-12 slider-wrap">
                 <div class="owl-carousel owl-theme no-nav js-carousel-1">
-                  
-                  <a href="#" class="img-bg" style="background-image: url('../public/listed/images/img_2.jpg')">
+                  @foreach($featuredPackage as $featured)
+                  <a href="#" class="img-bg" style="background-image: url('../public/images/{{$featured->package_title_image}}')">
                     <div class="text">
                       <span class="icon ion-ios-location"></span>
-                      <h2>Stockton Beach, Austrlia</h2>
+                      <h2>{{$featured->package_title}}</h2>
                       <p>Visit This Place</p>
                     </div>
                   </a>
-
-                  <a href="#" class="img-bg" style="background-image: url('../public/listed/images/img_1.jpg')">
-                    <div class="text">
-                      <span class="icon ion-ios-location"></span>
-                      <h2>Trogir, Croatia</h2>
-                      <p>Visit This Place</p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="img-bg last" style="background-image: url('../public/listed/images/img_3.jpg')">
-                    <div class="text">
-                      <span class="icon ion-ios-location"></span>
-                      <h2>Desert, Morocco</h2>
-                      <p>Visit This Place</p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="img-bg" style="background-image: url('../public/listed/images/img_2.jpg')">
-                    <div class="text">
-                      <span class="icon ion-ios-location"></span>
-                      <h2>Stockton Beach, Austrlia</h2>
-                      <p>Visit This Place</p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="img-bg" style="background-image: url('../public/listed/images/img_1.jpg')">
-                    <div class="text">
-                      <span class="icon ion-ios-location"></span>
-                      <h2>Trogir, Croatia</h2>
-                      <p>Visit This Place</p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="img-bg last" style="background-image: url('../public/listed/images/img_3.jpg')">
-                    <div class="text">
-                      <span class="icon ion-ios-location"></span>
-                      <h2>Desert, Morocco</h2>
-                      <p>Visit This Place</p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="img-bg" style="background-image: url('../public/listed/images/img_2.jpg')">
-                    <div class="text">
-                      <span class="icon ion-ios-location"></span>
-                      <h2>Stockton Beach, Austrlia</h2>
-                      <p>Visit This Place</p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="img-bg" style="background-image: url('../public/listed/images/img_1.jpg')">
-                    <div class="text">
-                      <span class="icon ion-ios-location"></span>
-                      <h2>Trogir, Croatia</h2>
-                      <p>Visit This Place</p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="img-bg last" style="background-image: url('../public/listed/images/img_3.jpg')">
-                    <div class="text">
-                      <span class="icon ion-ios-location"></span>
-                      <h2>Desert, Morocco</h2>
-                      <p>Visit This Place</p>
-                    </div>
-                  </a>
-
-
+                  @endforeach
+                 
                 </div>
               </div>
             </div>

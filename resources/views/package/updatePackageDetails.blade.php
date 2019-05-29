@@ -45,7 +45,13 @@
                 <div class="card-body card-block col-4">
                     <div class="form-group">
                         <label for="package_type" class=" form-control-label">Package type</label>
-                        <input value="{{$postdata->package_type}}" type="text" id="package_type" name="package_type" class="form-control">
+                         <select class="form-control" name="package_type">
+                            <option  value="">Select Package Type</option>
+                            <option @if($postdata->package_type == "Top") selected @endif value="Top">Top</option>
+                            <option @if($postdata->package_type == "Best") selected @endif value="Best">Best</option>
+                            <option @if($postdata->package_type == "Featured") selected @endif value="Featured">Featured</option>
+                            <option @if($postdata->package_type == "Normal") selected @endif value="Normal">Normal</option>
+                        </select>
                         {!! $errors->first('package_type', '<p class="text-danger">:message</p>') !!}
                     </div>
                 </div>
