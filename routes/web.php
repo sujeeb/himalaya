@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'FrontendController@index');
+Route::get('/packageDetail/{id}', 'FrontendController@packageDetail');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

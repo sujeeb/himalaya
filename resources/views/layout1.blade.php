@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{{ asset('listed/css/owl.carousel.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('listed/fonts/ionicons/css/ionicons.min.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('listed/fonts/fontawesome/css/font-awesome.min.css') }}">
 
     <!-- Theme Style -->
@@ -20,7 +19,7 @@
   </head>
   <body>
     
-    <header role="banner" style="background-color: #4e99ec">
+    <header role="banner">
      
       <nav class="navbar navbar-expand-md navbar-dark bg-light">
         <div class="container">
@@ -30,7 +29,7 @@
           </button>
 
           <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
-            <ul class="navbar-nav ml-auto pl-lg-6 pl-0">
+            <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
               <li class="nav-item">
                 <a class="nav-link active" href="index.html">Home</a>
               </li>
@@ -113,7 +112,7 @@
         <div class="row justify-content-center">
           <div class="col-md-7 text-center">
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Himalaya</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </div>
         </div>

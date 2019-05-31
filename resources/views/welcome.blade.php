@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(../public/listed/images/big_image_1.jpg);">
+    <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(../public/images/himalayas-main-1.jpg);">
       <div class="container">
         <div class="row align-items-center site-hero-inner justify-content-center">
           <div class="col-md-8 text-center">
@@ -29,7 +29,7 @@
         <div class="row">
           @foreach($bestPackage as $best)
           <div class="col-md-4 element-animate ">
-            <a href="#" class="img-bg" style="background-image: url('../public/images/{{$best->package_title_image}}')">
+            <a href="{{url('/packageDetail')}}/{{$best->id}}" class="img-bg" style="background-image: url('../public/images/{{$best->package_title_image}}')">
               <div class="text">
                 <span class="icon ion-ios-location"></span>
                 <h2>{{$best->package_title}}</h2>
@@ -56,7 +56,7 @@
         <div class="row top-destination">
           @foreach($topPackage as $top)
           <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="place">
+            <a href="{{url('/packageDetail')}}/{{$top->id}}" class="place">
               <img src="{{ asset('images')}}/{{$top->package_title_image }}" alt="Image placeholder">
               <h2>{{$top->package_title}}</h2>
               <p>Visit This Place</p>
@@ -68,7 +68,7 @@
     </section>
     <!-- END section -->
     
-    <section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url(../listed/images/big_image_2.jpg);">
+    <section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url(../public/images/kathmandu-main-2.jpg);">
       <div class="container">
         <div class="row justify-content-center align-items-center intro">
           <div class="col-md-7 text-center element-animate">
@@ -99,7 +99,7 @@
               <div class="col-md-12 slider-wrap">
                 <div class="owl-carousel owl-theme no-nav js-carousel-1">
                   @foreach($featuredPackage as $featured)
-                  <a href="#" class="img-bg" style="background-image: url('../public/images/{{$featured->package_title_image}}')">
+                  <a href="{{url('/packageDetail')}}/{{$featured->id}}" class="img-bg" style="background-image: url('../public/images/{{$featured->package_title_image}}')">
                     <div class="text">
                       <span class="icon ion-ios-location"></span>
                       <h2>{{$featured->package_title}}</h2>
