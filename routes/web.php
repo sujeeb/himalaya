@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'FrontendController@index');
+Route::get('/', 'FrontendController@index')->name('himalaya');
+Route::get('/addToCart', 'FrontendController@addToCart');
+
 Route::get('/packageDetail/{id}', 'FrontendController@packageDetail');
 
 

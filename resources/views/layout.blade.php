@@ -17,6 +17,8 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('listed/css/style.css') }}">
+      <script src="{{ asset('listed/js/jquery-3.2.1.min.js') }}"></script>
+   
   </head>
   <body>
     
@@ -24,7 +26,7 @@
      
       <nav class="navbar navbar-expand-md navbar-dark bg-light">
         <div class="container">
-          <a class="navbar-brand" href="index.html">Listed</a>
+          <a class="navbar-brand" href="{{route('himalaya')}}">Himalaya</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -124,8 +126,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- loader -->
     <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
 
-    <script src="{{ asset('listed/js/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('listed/js/jquery-migrate-3.0.0.js') }}"></script>
+   <script src="{{ asset('listed/js/jquery-migrate-3.0.0.js') }}"></script>
     <script src="{{ asset('listed/js/popper.min.js') }}"></script>
     <script src="{{ asset('listed/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('listed/js/owl.carousel.min.js') }}"></script>

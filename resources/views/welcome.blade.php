@@ -9,7 +9,7 @@
 
             <div class="mb-5 element-animate">
               <h1>Find your perfect place.</h1>
-              <p>Discover &amp; connect with great places around the world.</p>
+              <p>Discover &amp; connect with great places around Nepal.</p>
             </div>
 
             <form class="form-inline element-animate" id="search-form">
@@ -50,7 +50,7 @@
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center">
             <h2>Top Destinations</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum magnam illum maiores adipisci pariatur, eveniet.</p>
+            <p>Top destinations to visit in Nepal according to the people who have visited them.</p>
           </div>
         </div>
         <div class="row top-destination">
@@ -73,7 +73,7 @@
         <div class="row justify-content-center align-items-center intro">
           <div class="col-md-7 text-center element-animate">
             <h2>Get 10% off On Your Next Travel</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto quidem tempore expedita facere facilis, dolores!</p>
+            <p>Buy a package from us now and get 10% off on your next travel when you buy from us.</p>
             <p><a href="#" class="btn btn-black">Get Started</a></p>
           </div>
         </div>
@@ -87,7 +87,7 @@
           <div class="col-md-4 pr-5">
             
             <h2 class="mb-3">More Featured <br> Destinations</h2>
-            <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            <p class="mb-5">Every corner you go to - Nepal will make you feel very welcome with its friendly people and its immense beauty and historical charm. </p>
             
             <div class="mb-3">
               <a href="#" class="btn btn-primary custom-prev mr-2 mb-2"><span class="ion-android-arrow-back"></span></a> 

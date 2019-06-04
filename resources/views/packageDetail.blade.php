@@ -205,7 +205,7 @@
                         <div class="preview col-md-6">
 
                             <div class="preview-pic tab-content">
-                                <div class="tab-pane active" id="pic-1"><img src="{{ asset('images')}}/{{$details->package_title_image }}" /></div>
+                                <div class="tab-pane active" id="pic-1"><img src="{{ asset('images')}}/{{$details->package_title_image}}" /></div>
                                 <?php $sn = 2; ?>
                                 @foreach($images as $image)
 
@@ -226,15 +226,15 @@
                         </div>
                         <div class="details col-md-6">
                             <h3 class="product-title">{{$details->package_title}}</h3>
-
+                            <input type="hidden" name="package_id" id="package_id" value="{{$details->id}}" >
                             <p class="product-description">
                                 {{$details->package_description}}
                             </p>
                             <h4 class="price">current price: <span>{{$details->package_price}}</span></h4>
 
 
-                            <div class="action">
-                                <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                            <div>
+                                <button id="addToCart" class="add-to-cart btn btn-default" type="button">add to cart</button>
                             </div>
                         </div>
                     </div>
@@ -293,4 +293,21 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function(){
+      $("#addToCart").on("click", function(){
+
+        var package = $("#package_id").val();
+        $.ajax({
+          method: 'GET',
+          url: "{{url('/addToCart')}}",
+          data: {package:package},
+          success: function(data){
+            console.log(data);
+        }
+    });
+    });  
+  });
+
+</script>
 @endsection()
