@@ -234,11 +234,15 @@
 
 
                             <div id="added_to_cart">
+                                <?php if(isset(Session::get('cart.package'))){ ?>
                                 @if(in_array($details->id, Session::get('cart.package')))
                                     <button class="btn" type="button">Added on cart</button>
                                 @else
                                     <button id="addToCart" class="add-to-cart btn btn-default" type="button">add to cart</button>
                                 @endif
+                                <?php } else {?>
+                                    <button id="addToCart" class="add-to-cart btn btn-default" type="button">add to cart</button>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
