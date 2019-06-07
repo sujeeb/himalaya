@@ -233,8 +233,12 @@
                             <h4 class="price">current price: <span>{{$details->package_price}}</span></h4>
 
 
-                            <div>
-                                <button id="addToCart" class="add-to-cart btn btn-default" type="button">add to cart</button>
+                            <div id="added_to_cart">
+                                @if(in_array($details->id, Session::get('cart.package')))
+                                    <button class="btn" type="button">Added on cart</button>
+                                @else
+                                    <button id="addToCart" class="add-to-cart btn btn-default" type="button">add to cart</button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -303,7 +307,7 @@
           url: "{{url('/addToCart')}}",
           data: {package:package},
           success: function(data){
-            console.log(data);
+            $('#added_to_cart').html('<button class="btn" type="button">Added on cart</button>')
         }
     });
     });  

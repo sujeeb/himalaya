@@ -8,7 +8,7 @@ use App\Package_image;
 use App\Package_summary;
 use App\Package_include_exclude;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Session;
+use Session;
 
 
 class FrontendController extends Controller
@@ -45,19 +45,19 @@ class FrontendController extends Controller
                                             ->where('include_status', 0)->get();
         return view('packageDetail', $package);
     }
+
     public function addToCart(Request $request){
         $package_id = $_GET['package'];
-        //$_SESSION['hello'] = $package_id;
-        if($request->session()->get('cart')){
-            $request->session()->push('cart', $package_id);
-            var_dump($request->session()->get('cart'));
-        }
-        else{
-            echo 2;
-        }
-        $list = [$package_id];
-        $request->session()->put('cart',$list);
-        
+
+        Session::push('cart.package', $package_id);
+        return 1;
 
     }
+
+    public function cartlist(){
+
+        $sessionData = Session::get('cart.package');
+        return view('cartlist');
+    }
+
 }

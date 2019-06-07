@@ -13,6 +13,7 @@
 
 Route::get('/', 'FrontendController@index')->name('himalaya');
 Route::get('/addToCart', 'FrontendController@addToCart');
+Route::get('/cartlist', 'FrontendController@cartlist');
 
 Route::get('/packageDetail/{id}', 'FrontendController@packageDetail');
 
