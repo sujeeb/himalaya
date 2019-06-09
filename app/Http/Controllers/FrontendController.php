@@ -57,7 +57,24 @@ class FrontendController extends Controller
     public function cartlist(){
 
         $sessionData = Session::get('cart.package');
-        return view('cartlist');
+        $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
+
+
+        return view('cartlist',$cartListData);
+    }
+
+    public function removePackage(){
+        $package_id = $_GET['package'];
+        Session::pull('cart.package', $package_id);
+
+    }
+
+
+        public function logout () {
+        //logout user
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/');
     }
 
 }

@@ -10,17 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'FrontendController@index')->name('himalaya');
-Route::get('/addToCart', 'FrontendController@addToCart');
-Route::get('/cartlist', 'FrontendController@cartlist');
-
-Route::get('/packageDetail/{id}', 'FrontendController@packageDetail');
+Route::get('/logout', 'FrontendController@logout');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::group(['middleware' => ['role:admin']], function () {
+   //Route::get('/', 'FrontendController@index')->name('himalaya');
 
 Route::get('/package/create', 'PackageController@create')->name('package.create');
 Route::post('/package/store', 'PackageController@store')->name('package.store');
@@ -47,6 +41,28 @@ Route::post('/package/update/{id}', 'PackageController@update')->name('package.u
 Route::get('/updateimagediv', function(){
 	return view('packageImage/updateimagediv');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+});
+
+
+Route::group(['middleware' => ['role:user']], function () {
+   //Route::get('/', 'FrontendController@index')->name('himalaya');
+});
+
+ Route::get('/', 'FrontendController@index')->name('himalaya');
+
+Route::get('/addToCart', 'FrontendController@addToCart');
+Route::get('/removePackage', 'FrontendController@removePackage');
+Route::get('/cartlist', 'FrontendController@cartlist');
+
+Route::get('/packageDetail/{id}', 'FrontendController@packageDetail');
+
+
+
+
+
 
 
 
