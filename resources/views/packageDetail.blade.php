@@ -234,7 +234,7 @@
 
 
                             <div id="added_to_cart">
-                                @if(session()->has('cart') && in_array($details->id, Session::get('cart.package')))
+                                @if(session()->has('cart') && in_array($details->id, Session::get('cart')))
                                     <button class="btn" type="button">Added on cart</button>
                                 @else
                                     <button id="addToCart" class="add-to-cart btn btn-default" type="button">add to cart</button>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Session;
 
 
+
 class FrontendController extends Controller
 {
     //
@@ -18,7 +19,7 @@ class FrontendController extends Controller
     	$bestPackage = Package::where('status', 1)
                        ->where('package_type', 'Best')
                        ->limit(3)->get();
-                              
+
     	$data['bestPackage'] = $bestPackage;
 
     	$topPackage = Package::where('status', 1)
@@ -49,14 +50,14 @@ class FrontendController extends Controller
     public function addToCart(Request $request){
         $package_id = $_GET['package'];
 
-        Session::push('cart.package', $package_id);
+        Session::push('cart', $package_id);
         return 1;
 
     }
 
     public function cartlist(){
 
-        $sessionData = Session::get('cart.package');
+        $sessionData = Session::get('cart');
         $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
 
 
@@ -64,9 +65,20 @@ class FrontendController extends Controller
     }
 
     public function removePackage(){
-        $package_id = $_GET['package'];
-        Session::pull('cart.package', $package_id);
+        $package_id = $_GET['package_id'];
+        $cart = Session::get('cart');
 
+       Session::forget('cart');
+        foreach ($cart as $key => $value) {
+            if($value != $package_id) {
+                Session::push('cart', $value);
+            }
+        }
+
+
+        $sessionData = Session::get('cart');
+        $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
+        return view('cartlist',$cartListData);
     }
 
 

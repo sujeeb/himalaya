@@ -30,7 +30,7 @@
                     </td>
                     <td data-th="Price">{{$package->package_price}}</td>
                     <td class="actions" data-th="">
-                        <button id="{{$package->id}}" class="checkout btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <a href="{{url('removePackage')}}?package_id={{$package->id}}"  class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
                 <?php $total += $package->package_price; ?>
@@ -53,18 +53,18 @@
         </div>
         </div>
     </section>
-    <script>
-        $(".checkout").on('click', function(){
-            
-            var package = this.id;
-            $.ajax({
-              method: 'GET',
-              url: "{{url('/removePackage')}}",
-              data: {package:package},
-              success: function(data){
-                    
-              }
-          });
-        });
-    </script>
+    {{--<script>--}}
+        {{--$(".checkout").on('click', function(){--}}
+            {{----}}
+            {{--var package = this.id;--}}
+            {{--$.ajax({--}}
+              {{--method: 'GET',--}}
+              {{--url: "{{url('/removePackage')}}",--}}
+              {{--data: {package:package},--}}
+              {{--success: function(data){--}}
+
+              {{--}--}}
+          {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
 @endsection()
