@@ -66,10 +66,10 @@ class FrontendController extends Controller
 
     public function removePackage(){
         $package_id = $_GET['package_id'];
-        $cart = Session::get('cart');
+        $cartall = Session::get('cart');
 
        Session::forget('cart');
-        foreach ($cart as $key => $value) {
+        foreach ($cartall as $value) {
             if($value != $package_id) {
                 Session::push('cart', $value);
             }
@@ -77,8 +77,11 @@ class FrontendController extends Controller
 
 
         $sessionData = Session::get('cart');
+        if($sessionData != null)
         $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
-        return view('cartlist',$cartListData);
+    else
+        $cartListData = [];
+                return view('cartlist',$cartListData);
     }
 
 
@@ -88,5 +91,13 @@ class FrontendController extends Controller
         // redirect to homepage
         return redirect('/');
     }
+
+   public function payment(){
+        $sessionData = Session::get('cart');
+        $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
+
+
+        return view('payment',$cartListData);
+   } 
 
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User_package;
 class UserPackageController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class UserPackageController extends Controller
      */
     public function index()
     {
-        //
+        $data['packagedata'] = User_package::all();
+        return view('userpackage/index', $data);
     }
 
     /**

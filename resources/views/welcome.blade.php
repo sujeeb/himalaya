@@ -57,7 +57,7 @@
           @foreach($topPackage as $top)
           <div class="col-lg-2 col-md-4 col-sm-6 col-12">
             <a href="{{url('/packageDetail')}}/{{$top->id}}" class="place">
-              <img src="{{ asset('images')}}/{{$top->package_title_image }}" alt="Image placeholder">
+              <img src="{{ asset('images')}}/{{$top->package_title_image }}" alt="Image placeholder" width="200px" height="150px">
               <h2>{{$top->package_title}}</h2>
               <p>Visit This Place</p>
             </a>

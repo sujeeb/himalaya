@@ -49,6 +49,10 @@ Route::get('/dashboard', function () {
 
 Route::group(['middleware' => ['role:user']], function () {
    //Route::get('/', 'FrontendController@index')->name('himalaya');
+	Route::get('/payment', 'FrontendController@payment');
+
+	Route::get('stripe', 'StripePaymentController@stripe');
+	Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 });
 
  Route::get('/', 'FrontendController@index')->name('himalaya');

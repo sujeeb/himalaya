@@ -15,7 +15,9 @@
                 </thead>
                 <tbody>
 
-                <?php $total =  0; ?>
+                <?php $total =  0; 
+                if(count($packages) > 0){
+                ?>
                 @foreach($packages as $package)
 
                 <tr>
@@ -35,7 +37,17 @@
                 </tr>
                 <?php $total += $package->package_price; ?>
                 @endforeach
-                
+                <?php
+            }
+            else{
+?>
+<tr class="visible-xs">
+                    <td colspan="4" class="text-center"><strong>Cart is empty!</strong></td>
+
+                </tr>
+<?php
+            }
+                ?>
                 </tbody>
                 <tfoot>
                 <tr class="visible-xs">
@@ -53,18 +65,5 @@
         </div>
         </div>
     </section>
-    {{--<script>--}}
-        {{--$(".checkout").on('click', function(){--}}
-            {{----}}
-            {{--var package = this.id;--}}
-            {{--$.ajax({--}}
-              {{--method: 'GET',--}}
-              {{--url: "{{url('/removePackage')}}",--}}
-              {{--data: {package:package},--}}
-              {{--success: function(data){--}}
 
-              {{--}--}}
-          {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
 @endsection()
