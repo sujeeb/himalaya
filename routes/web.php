@@ -16,6 +16,7 @@ Route::get('/logout', 'FrontendController@logout');
 Route::group(['middleware' => ['role:admin']], function () {
    //Route::get('/', 'FrontendController@index')->name('himalaya');
 
+
 Route::get('/package/create', 'PackageController@create')->name('package.create');
 Route::post('/package/store', 'PackageController@store')->name('package.store');
 Route::get('/package/index', 'PackageController@index')->name('package.index');
@@ -69,7 +70,7 @@ Route::get('/packageDetail/{id}', 'FrontendController@packageDetail');
 
 
 
-
+Route::get('/package/allpayment', 'PackageController@allpayment')->name('package.allpayment');
 
 
 

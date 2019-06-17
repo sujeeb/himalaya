@@ -9,6 +9,7 @@ use App\Package_summary;
 use App\Package_include_exclude;
 use App\Package_image;
 use DB;
+use App\BillingInformation;
 
 class PackageController extends Controller
 {
@@ -244,5 +245,12 @@ class PackageController extends Controller
     {
         Package::destroy($id);
         return redirect('/package/index');
+    }
+
+    public function allpayment()
+    {
+      echo 'hi';exit;
+      $data['billing']= BillingInformation::all();
+      return view('package/listPayment', $data);
     }
 }
