@@ -9,11 +9,26 @@ use App\Package_summary;
 use App\Package_include_exclude;
 use App\Http\Controllers\Controller;
 use Session;
-
+use App\BillingInformation;
+use App\User_package;
 
 
 class FrontendController extends Controller
 {
+    
+
+      public function allpayment()
+    {
+      $data['billing']= BillingInformation::all();
+      return view('package/listPayment', $data);
+    }
+
+    public function paymentdetaillist(){
+        $id =$_GET['id'];
+        $data['allpackages'] = User_package::where('total_price', $id)->get();
+        return view('package/displayUerPackage', $data);
+
+    }
     //
     public function index(){
     	$bestPackage = Package::where('status', 1)

@@ -24,6 +24,7 @@ class PackageController extends Controller
         return view('package/index', $data);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -247,10 +248,5 @@ class PackageController extends Controller
         return redirect('/package/index');
     }
 
-    public function allpayment()
-    {
-      echo 'hi';exit;
-      $data['billing']= BillingInformation::all();
-      return view('package/listPayment', $data);
-    }
+
 }

@@ -3,7 +3,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Package ID</th>
+      <th scope="col">User ID</th>
       <th scope="col">Total Price</th>
       <th scope="col">Action</th>
     </tr>
@@ -13,7 +13,7 @@
     <tr>
       <td>{{$displaydata->user_id}}</td>
       <td>{{$displaydata->total_price}}</td>
-      <td><a href="{{}}" class="btn btn-info">View Details</a></td>
+      <td><a href="{{url('paymentdetaillist')}}?id={{$displaydata->id}}" class="btn btn-info">View Details</a></td>
     </tr>
 @endforeach
   </tbody>
