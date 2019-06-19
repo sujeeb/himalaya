@@ -40,7 +40,7 @@ class StripePaymentController extends Controller
             "amount" => $request->total_amount * 100,
             "currency" => "usd",
             "source" => $request->stripeToken,
-            "description" => "Test payment from itsolutionstuff.com." 
+            "description" => "Test payment from himalaya" 
         ]);
         
           //saving package data brought by whom

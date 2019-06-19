@@ -307,7 +307,8 @@
           url: "{{url('/addToCart')}}",
           data: {package:package},
           success: function(data){
-            $('#added_to_cart').html('<button class="btn" type="button">Added on cart</button>')
+            $('#added_to_cart').html('<button class="btn" type="button">Added on cart</button>');
+            $('#cart_number').html(data);
         }
     });
     });  

@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\BillingInformation;
 use App\User_package;
+use Auth;
 
 
 class FrontendController extends Controller
@@ -29,7 +30,24 @@ class FrontendController extends Controller
         return view('package/displayUerPackage', $data);
 
     }
-    //
+
+
+    public function mypaymentdetaillist(){
+        $id =$_GET['id'];
+        $data['allpackages'] = User_package::where('total_price', $id)->get();
+        return view('displayUserPackage', $data);
+
+    }
+    public function about(){
+        return view('/about');
+    }
+        public function  contact(){
+        return view('/contact');
+    }
+    public function history(){
+         $data['billing']= BillingInformation::where('user_id', Auth::id())->get();
+      return view('listPayment', $data);
+    }
     public function index(){
     	$bestPackage = Package::where('status', 1)
                        ->where('package_type', 'Best')
@@ -66,16 +84,18 @@ class FrontendController extends Controller
         $package_id = $_GET['package'];
 
         Session::push('cart', $package_id);
-        return 1;
+        return count(Session::get('cart'));
 
     }
 
     public function cartlist(){
-
+        $packages = [];
+        if(Session::has('cart')){
         $sessionData = Session::get('cart');
-        $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
-
-
+        $packages = Package::whereIn('id', $sessionData)->get();
+        }
+        
+$cartListData['packages'] = $packages;
         return view('cartlist',$cartListData);
     }
 
@@ -108,11 +128,28 @@ class FrontendController extends Controller
     }
 
    public function payment(){
-        $sessionData = Session::get('cart');
-        $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
+        $packages = [];
+        if(Session::has('cart')){
+            if(Auth::id()){
+                $sessionData = Session::get('cart');
+            $packages = Package::whereIn('id', $sessionData)->get();
+            $cartListData['packages'] = $packages;
+            return view('payment',$cartListData);
+
+            }
+            else{
+                redirect('/login');
+            }
+            
+        }
+        else{
+            $cartListData['packages'] = $packages;
+        return view('cartlist',$cartListData);
+        }
 
 
-        return view('payment',$cartListData);
+
+        
    } 
 
 }

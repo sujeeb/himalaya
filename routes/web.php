@@ -56,16 +56,20 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['role:user']], function () {
    //Route::get('/', 'FrontendController@index')->name('himalaya');
 	Route::get('/payment', 'FrontendController@payment');
-
+Route::get('/history', 'FrontendController@history')->name('history');
+Route::get('mypaymentdetaillist', 'FrontendController@mypaymentdetaillist')->name('mypaymentdetaillist');
 	Route::get('stripe', 'StripePaymentController@stripe');
 	Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 });
 
  Route::get('/', 'FrontendController@index')->name('himalaya');
+ Route::get('/about', 'FrontendController@about')->name('about');
+ Route::get('/contact', 'FrontendController@contact')->name('contact');
+
 
 Route::get('/addToCart', 'FrontendController@addToCart');
 Route::get('/removePackage', 'FrontendController@removePackage');
-Route::get('/cartlist', 'FrontendController@cartlist');
+Route::get('/cartlist', 'FrontendController@cartlist')->name('cartlist');
 
 Route::get('/packageDetail/{id}', 'FrontendController@packageDetail');
 

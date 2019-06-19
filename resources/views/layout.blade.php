@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Colorlib Listed Directory Template</title>
+    <title>HIMALAYA</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -34,29 +34,41 @@
           <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
             <ul class="navbar-nav ml-auto pl-lg-6 pl-0">
               <li class="nav-item">
-                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link {{ (request()->routeIs('himalaya')) ? 'active' : '' }}" href="{{url('/')}}">Home</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="destination.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Destination</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="destination.html">Places</a>
-                  <a class="dropdown-item" href="destination.html">Hotels</a>
-                  <a class="dropdown-item" href="destination.html">Restaurants</a>
-                </div>
+            
+           
+              <li class="nav-item">
+                <a class="nav-link {{ (request()->routeIs('about')) ? 'active' : '' }}" href="{{url('/about')}}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ (request()->routeIs('contact')) ? 'active' : '' }}" href="{{url('/contact')}}">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ (request()->routeIs('cartlist')) ? 'active' : '' }}" href="{{url('/cartlist')}}">
+                  <i class="fas fa-shopping-cart">
+                    <?php $s = 0;
+                    if(Session::has('cart')){
+                      $s = count(Session::get('cart'));
+                    }
+                    ?>
+                    <span id="cart_number" class="badge badge-danger">{{$s}}</span>
+                  </i>
+                </a>
+              </li>
+              <li class="nav-item">
+                @if(Auth::id())
+                <a class="nav-link" href="{{route('logout')}}">Logout</a>
+                @else
+                <a class="nav-link" href="{{route('login')}}">Login/Register</a>
+                @endif
+              </li>
+              @if(Auth::id())
+              <li class="nav-item">
+                <a class="nav-link {{ (request()->routeIs('history')) ? 'active' : '' }}" href="{{url('/history')}}">History</a>
+              </li>
 
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="{{route('login')}}">Login</a>
-              </li>
+              @endif
             </ul>
             
           </div>
