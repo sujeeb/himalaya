@@ -5,13 +5,15 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Package Type</th>
+      <th scope="col">Package</th>
+      <th scope="col">Date</th>
     </tr>
   </thead>
   <tbody>
   	@foreach($allpackages as $packagedata)
     <tr>
-      <td>{{$packagedata->package_id}}</td>
+      <td>{{$packagedata->package->package_title}}</td>
+      <td>{{$packagedata->created_at}}</td>
     </tr>
 @endforeach
   </tbody>

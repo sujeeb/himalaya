@@ -16,12 +16,12 @@ use Auth;
 
 class FrontendController extends Controller
 {
-    
 
-      public function allpayment()
+
+    public function allpayment()
     {
-      $data['billing']= BillingInformation::all();
-      return view('package/listPayment', $data);
+        $data['billing']= BillingInformation::all();
+        return view('package/listPayment', $data);
     }
 
     public function paymentdetaillist(){
@@ -41,42 +41,51 @@ class FrontendController extends Controller
     public function about(){
         return view('/about');
     }
-        public function  contact(){
+    public function  contact(){
         return view('/contact');
     }
     public function history(){
-         $data['billing']= BillingInformation::where('user_id', Auth::id())->get();
-      return view('listPayment', $data);
+        $data['billing']= BillingInformation::where('user_id', Auth::id())->get();
+        return view('listpayment', $data);
     }
     public function index(){
-    	$bestPackage = Package::where('status', 1)
-                       ->where('package_type', 'Best')
-                       ->limit(3)->get();
+        $bestPackage = Package::where('status', 1)
+            ->where('package_type', 'Best')
+            ->limit(3)->get();
 
-    	$data['bestPackage'] = $bestPackage;
+        $data['bestPackage'] = $bestPackage;
 
-    	$topPackage = Package::where('status', 1)
-                    ->where('package_type', 'Top')
-                    ->limit(6)->get();
+        $topPackage = Package::where('status', 1)
+            ->where('package_type', 'Top')
+            ->limit(6)->get();
 
-    	$data['topPackage'] = $topPackage;
+        $data['topPackage'] = $topPackage;
 
         $featuredPackage = Package::where('status',1)
-                                   ->where('package_type', 'Featured')
-    	                           ->limit(6)->get();
+            ->where('package_type', 'Featured')
+            ->limit(6)->get();
         $data['featuredPackage'] = $featuredPackage;
-    	return view('welcome', $data);
+        return view('welcome', $data);
+    }
+    public function search(Request $request){
+        $keyword = $request->get('keyword');
+        $searchData = Package::Where('package_title', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('package_description', 'LIKE', '%'.$keyword.'%')
+            ->get();
+
+        $data['searchdata'] = $searchData;
+        return view('search', $data);
     }
     public function packageDetail($id){
         $package['details'] = Package::find($id);
         $package['images'] = Package_image::where('package_id', $id)
-                                            ->where('image_status', 1)->get();
+            ->where('image_status', 1)->get();
         $package['allsummary'] = Package_summary::where('package_id', $id)
-                                            ->where('summary_status', 1)->get();
+            ->where('summary_status', 1)->get();
         $package['includes'] = Package_include_exclude::where('package_id', $id)
-                                            ->where('include_status', 1)->get();
+            ->where('include_status', 1)->get();
         $package['excludes'] = Package_include_exclude::where('package_id', $id)
-                                            ->where('include_status', 0)->get();
+            ->where('include_status', 0)->get();
         return view('packageDetail', $package);
     }
 
@@ -91,11 +100,11 @@ class FrontendController extends Controller
     public function cartlist(){
         $packages = [];
         if(Session::has('cart')){
-        $sessionData = Session::get('cart');
-        $packages = Package::whereIn('id', $sessionData)->get();
+            $sessionData = Session::get('cart');
+            $packages = Package::whereIn('id', $sessionData)->get();
         }
-        
-$cartListData['packages'] = $packages;
+
+        $cartListData['packages'] = $packages;
         return view('cartlist',$cartListData);
     }
 
@@ -103,7 +112,7 @@ $cartListData['packages'] = $packages;
         $package_id = $_GET['package_id'];
         $cartall = Session::get('cart');
 
-       Session::forget('cart');
+        Session::forget('cart');
         foreach ($cartall as $value) {
             if($value != $package_id) {
                 Session::push('cart', $value);
@@ -113,43 +122,43 @@ $cartListData['packages'] = $packages;
 
         $sessionData = Session::get('cart');
         if($sessionData != null)
-        $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
-    else
-        $cartListData = [];
-                return view('cartlist',$cartListData);
+            $cartListData['packages'] = Package::whereIn('id', $sessionData)->get();
+        else
+            $cartListData = [];
+        return view('cartlist',$cartListData);
     }
 
 
-        public function logout () {
+    public function logout () {
         //logout user
         auth()->logout();
         // redirect to homepage
         return redirect('/');
     }
 
-   public function payment(){
+    public function payment(){
         $packages = [];
         if(Session::has('cart')){
             if(Auth::id()){
                 $sessionData = Session::get('cart');
-            $packages = Package::whereIn('id', $sessionData)->get();
-            $cartListData['packages'] = $packages;
-            return view('payment',$cartListData);
+                $packages = Package::whereIn('id', $sessionData)->get();
+                $cartListData['packages'] = $packages;
+                return view('payment',$cartListData);
 
             }
             else{
                 redirect('/login');
             }
-            
+
         }
         else{
             $cartListData['packages'] = $packages;
-        return view('cartlist',$cartListData);
+            return view('cartlist',$cartListData);
         }
 
 
 
-        
-   } 
+
+    }
 
 }

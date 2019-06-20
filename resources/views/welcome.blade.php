@@ -12,9 +12,11 @@
               <p>Discover &amp; connect with great places around Nepal.</p>
             </div>
 
-            <form class="form-inline element-animate" id="search-form">
+            <form class="form-inline element-animate" method="post" action="{{url('/search')}}" id="search-form">
+
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <label for="s" class="sr-only">Location</label>
-              <input type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Search Location with Google Search API" onFocus="geolocate()">
+              <input name="keyword" type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Search with Keyword">
               <button type="submit" class="btn btn-primary">Search</button>
             </form>
 

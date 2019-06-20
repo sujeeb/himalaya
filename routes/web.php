@@ -56,6 +56,7 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['role:user']], function () {
    //Route::get('/', 'FrontendController@index')->name('himalaya');
 	Route::get('/payment', 'FrontendController@payment');
+	Route::post('/search', 'FrontendController@search')->name('search');
 Route::get('/history', 'FrontendController@history')->name('history');
 Route::get('mypaymentdetaillist', 'FrontendController@mypaymentdetaillist')->name('mypaymentdetaillist');
 	Route::get('stripe', 'StripePaymentController@stripe');

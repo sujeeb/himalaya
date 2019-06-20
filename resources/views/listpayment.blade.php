@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th scope="col">Total Price</th>
+      <th scope="col">Date</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
   	@foreach($billing as $displaydata)
     <tr>
       <td>{{$displaydata->total_price}}</td>
+      <td>{{$displaydata->created_at}}</td>
       <td><a href="{{url('mypaymentdetaillist')}}?id={{$displaydata->id}}" class="btn btn-info">View Details</a></td>
     </tr>
 @endforeach
